@@ -3,12 +3,12 @@ from flet import AppBar, ElevatedButton, View
 
 def main(page: ft.Page):
     page.title = "La historia de la Informática"
-    page.bgcolor = "#08283f"
-    page.window_width = 650
+    page.bgcolor = "Red"
+    page.window_width = 1200
     page.window_height = 800
     
     image_width_Portada = 800
-    image_height_Portada = 400
+    image_height_Portada = 300
     
     img_height = 100
     img_width = 100
@@ -114,6 +114,9 @@ def main(page: ft.Page):
     
     swift = ft.Audio(src="swift.mp3",volume=1,balance=0)
     page.overlay.append(swift)
+    
+    Cloud = ft.Audio(src="Audio.Cloud.mp3", volume=1, balance=0)
+    page.overlay.append(Cloud)
     def StopAll():
         intro.pause()
         Pascal.pause()
@@ -148,6 +151,7 @@ def main(page: ft.Page):
         js.pause()
         perl.pause()
         swift.pause()
+        Cloud.pause()
     
     def play_intro(e):
         StopAll()
@@ -280,7 +284,11 @@ def main(page: ft.Page):
     def play_swift(e):
         StopAll()
         swift.play()
-    
+        
+    def play_cloud(e):
+        StopAll()
+        Cloud.play()
+            
     # Botones Padres de la informática con imágenes y etiquetas semánticas
     btn1 = ElevatedButton(content=ft.Image(src="Pascal.jpeg", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Blaise Pascal"), on_click=play_pascal)
     btn2 = ElevatedButton(content=ft.Image(src="Leibniz.png", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Gottfried Wilhelm Leibniz"), on_click=play_leibniz)
@@ -301,8 +309,7 @@ def main(page: ft.Page):
     btn17 = ElevatedButton(content=ft.Image(src="Gates.jpeg", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Bill Gates"), on_click=play_gates)
     btn18 = ElevatedButton(content=ft.Image(src="Zuckerberg.webp", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Mark Zuckerberg"), on_click=play_zuckerberg)
     btn19 = ElevatedButton(content=ft.Image(src="Pages.jpg", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Larry Page"), on_click=play_pages)
-    btn20 = ElevatedButton(content=ft.Image(src="Brin.webp", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Sergey Brin"), on_click=play_brin)
-    
+    btn20 = ElevatedButton(content=ft.Image(src="Brin.webp", width=img_width, height=img_height, border_radius=border_radius, semantics_label="Sergey Brin"), on_click=play_brin)   
     # Botones Tipos de lenguaje btn = ElevatedButton(content=ft.Image(src="",width=img_width,height=img_height, border_radius=border_radius, semantics_label="""))
     btn21 = ElevatedButton(content=ft.Image(src="fortran.png",width=img_width,height=img_height, border_radius=border_radius, semantics_label="Fortran"), on_click=play_fortran)
     btn22 = ElevatedButton(content=ft.Image(src="cobol.png",width=img_width,height=img_height, border_radius=border_radius, semantics_label="cobol"), on_click=play_cobol)
@@ -318,6 +325,7 @@ def main(page: ft.Page):
     btn30 = ElevatedButton(content=ft.Image(src="javascrip.png",width=img_width,height=img_height,border_radius=border_radius,semantics_label="javascrip"),on_click=play_js)
     btn31 = ElevatedButton(content=ft.Image(src="perl.png",width=img_width,height=img_height,border_radius=border_radius,semantics_label="perl"),on_click=play_perl)
     btn32 = ElevatedButton(content=ft.Image(src="swift.png",width=img_width,height=img_height,border_radius=border_radius,semantics_label="swift"),on_click=play_swift)
+    btn33 = ElevatedButton(content=ft.Image(src="Img.Cloud.Computing.jpg", width=img_width, height=img_height, border_radius=border_radius,semantics_label="Cloud"),on_click=play_cloud)
     # Manejo del cambio de ruta
     def route_change(route):
         # Limpia las vistas anteriores
@@ -338,7 +346,7 @@ def main(page: ft.Page):
                                 controls=[
                                     ElevatedButton(
                                         'Los padres de la informática',
-                                        on_click=lambda _: [StopAll(), page.go('/padres')]),
+                                        on_click=lambda _: [StopAll(), page.go('/padres')]),                                    
                                     ft.ElevatedButton(
                                         "la evolucion de los lenguajes de programacion",
                                         on_click=lambda _: [StopAll(), page.go('/lenguajes'),]),
@@ -400,30 +408,22 @@ def main(page: ft.Page):
                                         ]
                                     ),
                                     ft.Row(
-                                      alignment="center",
-                                      controls=[
-                                        btn5, btn6, btn7,btn8
-                                      ]  
+                                    alignment="center",
+                                    controls=[btn5, btn6, btn7,btn8]  
                                     ),
                                     ft.Row(
-                                       alignment="center",
-                                        controls=[
-                                          btn9, btn10, btn11,btn12
-                                        ] 
+                                    alignment="center",
+                                        controls=[btn9, btn10, btn11,btn12] 
                                     ),
                                     ft.Row(
                                         alignment="center",
-                                        controls=[
-                                          btn13,btn14,btn15,btn16
-                                        ] 
+                                        controls=[btn13,btn14,btn15,btn16] 
                                     ),
                                     ft.Row(
                                         alignment="center",
-                                        controls=[
-                                          btn17,btn18,btn19,btn20
-                                        ] 
+                                        controls=[btn17,btn18,btn19,btn20] 
                                     ),
-                                     ElevatedButton(
+                                    ElevatedButton(
                                         'La evolución de los lenguajes de programación',
                                         on_click=lambda _: page.go('/lenguajes')
                                     ),
@@ -469,6 +469,10 @@ def main(page: ft.Page):
                                     ft.Row(
                                         alignment="center",
                                         controls=[btn29,btn30,btn31,btn32]
+                                    ),
+                                    ft.Row(
+                                        alignment="center",
+                                        controls=[btn33]
                                     )
                                 ],
                                 alignment=ft.MainAxisAlignment.START
